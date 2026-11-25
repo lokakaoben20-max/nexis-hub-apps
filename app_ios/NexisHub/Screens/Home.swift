@@ -315,7 +315,7 @@ private struct NotificationRow: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(item.title).font(.body(15, .semibold, relativeTo: .headline))
             Text(item.message).font(.body(14, relativeTo: .subheadline)).foregroundStyle(Nexis.muted)
-            Text(app.day(item.when)).font(.body(12, relativeTo: .caption)).foregroundStyle(Nexis.muted)
+            Text(app.day(item.when)).font(.body(12, relativeTo: .caption1)).foregroundStyle(Nexis.muted)
         }
         .padding(.vertical, 4)
     }
