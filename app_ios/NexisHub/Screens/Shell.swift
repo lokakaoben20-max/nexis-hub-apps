@@ -32,7 +32,7 @@ struct ShellView: View {
                 ProfileView()
             }
         }
-        .modifier(RequestServiceAccessory(open: $picking))
+        .modifier(RequestServiceAccessory(open: $picking, tab: tab))
         .onAppear {
             switch app.capture {
             case "missions": tab = .missions
@@ -70,24 +70,36 @@ struct ShellView: View {
 private struct RequestServiceAccessory: ViewModifier {
     @Environment(AppModel.self) private var app
     @Binding var open: Bool
+    let tab: AppTab
+
+    /// Côté prestataire, rien à demander ; dans un écran de mission (paiement,
+    /// suivi…), l'accessoire se range avec la barre d'onglets.
+    private var shown: Bool { !app.providerSpace && !app.openFlowTabs.contains(tab) }
 
     func body(content: Content) -> some View {
-        // Côté prestataire, rien à demander : pas d'accessoire.
-        if app.providerSpace {
-            content
-        } else if #available(iOS 26.0, *) {
+        if #available(iOS 26.1, *) {
             content
                 .tabBarMinimizeBehavior(.onScrollDown)
-                .tabViewBottomAccessory {
-                    Button { open = true } label: {
-                        Label(app.t("requestService"), systemImage: "plus")
-                            .font(.body(15, .semibold, relativeTo: .subheadline))
-                            .foregroundStyle(Nexis.accent)
-                            .frame(maxWidth: .infinity)
-                    }
-                }
+                .tabViewBottomAccessory(isEnabled: shown) { button }
+        } else if #available(iOS 26.0, *) {
+            if app.providerSpace {
+                content.tabBarMinimizeBehavior(.onScrollDown)
+            } else {
+                content
+                    .tabBarMinimizeBehavior(.onScrollDown)
+                    .tabViewBottomAccessory { button }
+            }
         } else {
             content
+        }
+    }
+
+    private var button: some View {
+        Button { open = true } label: {
+            Label(app.t("requestService"), systemImage: "plus")
+                .font(.body(15, .semibold, relativeTo: .subheadline))
+                .foregroundStyle(Nexis.accent)
+                .frame(maxWidth: .infinity)
         }
     }
 }

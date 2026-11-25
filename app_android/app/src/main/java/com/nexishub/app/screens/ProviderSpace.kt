@@ -139,12 +139,12 @@ object PriceInput {
         return when (currency) {
             Currency.CDF -> {
                 if (!francs.matches(clean)) return null
-                val value = clean.toInt()
+                val value = clean.toLong()
                 if (value > 0) Money(value, Currency.CDF) else null
             }
             Currency.USD -> {
                 val match = dollars.matchEntire(clean) ?: return null
-                val cents = match.groupValues[1].toInt() * 100 + match.groupValues[2].padEnd(2, '0').toInt()
+                val cents = match.groupValues[1].toLong() * 100 + match.groupValues[2].padEnd(2, '0').toLong()
                 if (cents > 0) Money(cents, Currency.USD) else null
             }
         }

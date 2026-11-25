@@ -112,7 +112,7 @@ struct ProviderHomeView: View {
             .navigationTitle(greeting)
             .missionDestinations()
         }
-        .missionFlow(flow)
+        .missionFlow(flow, tab: .home)
         .task(id: app.revision) {
             home = try? await app.repository.providerHome()
             profile = try? await app.repository.profile()
@@ -255,7 +255,7 @@ struct ProviderMissionsView: View {
             .navigationTitle(app.t("myMissions"))
             .missionDestinations()
         }
-        .missionFlow(flow)
+        .missionFlow(flow, tab: .missions)
         .task(id: app.revision) { home = try? await app.repository.providerHome() }
     }
 }

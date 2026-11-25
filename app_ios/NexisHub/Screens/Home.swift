@@ -72,7 +72,7 @@ struct HomeView: View {
             .missionDestinations()
             .task(id: app.revision) { await load() }
         }
-        .missionFlow(flow)
+        .missionFlow(flow, tab: .home)
     }
 
     private var greeting: String {

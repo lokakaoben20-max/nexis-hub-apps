@@ -79,18 +79,22 @@ extension View {
 
     /// À poser sur la NavigationStack : partage `flow` avec ses écrans et
     /// affiche ses messages.
-    func missionFlow(_ flow: MissionFlow) -> some View {
-        modifier(MissionFlowHost(flow: flow))
+    func missionFlow(_ flow: MissionFlow, tab: AppTab) -> some View {
+        modifier(MissionFlowHost(flow: flow, tab: tab))
     }
 }
 
 private struct MissionFlowHost: ViewModifier {
     @Environment(AppModel.self) private var app
     @Bindable var flow: MissionFlow
+    let tab: AppTab
 
     func body(content: Content) -> some View {
         content
             .environment(flow)
+            .onChange(of: flow.path.isEmpty, initial: true) { _, empty in
+                if empty { app.openFlowTabs.remove(tab) } else { app.openFlowTabs.insert(tab) }
+            }
             .sheet(item: $flow.comingSoon) { item in ComingSoonView(title: item.id) }
             .alert(flow.pendingNotice?.serviceName(app.language) ?? "",
                    isPresented: Binding(get: { flow.pendingNotice != nil },

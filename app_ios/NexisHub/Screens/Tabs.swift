@@ -40,7 +40,7 @@ struct MissionsView: View {
             .missionDestinations()
             .task(id: app.revision) { missions = (try? await app.repository.missions()) ?? [] }
         }
-        .missionFlow(flow)
+        .missionFlow(flow, tab: .missions)
         .onAppear {
             if let routes = MissionRoute.forCapture(app.capture), flow.path.isEmpty,
                !MissionRoute.providerCaptures.contains(app.capture ?? "") {

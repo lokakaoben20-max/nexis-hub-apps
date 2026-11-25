@@ -408,13 +408,13 @@ fun MapSketch(sharing: Boolean, modifier: Modifier = Modifier) {
                 drawRoundRect(park, Offset(210f, 16f), Size(42f, 40f), CornerRadius(6f))
                 drawRoundRect(park, Offset(76f, 118f), Size(30f, 26f), CornerRadius(6f))
                 if (sharing) {
-                    fun route(vararg points: Offset) = Path().apply {
+                    fun route(points: List<Offset>) = Path().apply {
                         moveTo(points[0].x, points[0].y)
                         points.drop(1).forEach { lineTo(it.x, it.y) }
                     }
                     val stroke = Stroke(5f, cap = StrokeCap.Round, join = StrokeJoin.Round)
-                    drawPath(route(Offset(62f, 128f), Offset(58f, 104f), Offset(160f, 98f), Offset(166f, 70f), Offset(250f, 64f)), Nexis.brand, style = stroke)
-                    drawPath(route(Offset(62f, 128f), Offset(58f, 104f), Offset(120f, 100f)), Color(0xFF9FC2F7), style = stroke)
+                    drawPath(route(listOf(Offset(62f, 128f), Offset(58f, 104f), Offset(160f, 98f), Offset(166f, 70f), Offset(250f, 64f))), Nexis.brand, style = stroke)
+                    drawPath(route(listOf(Offset(62f, 128f), Offset(58f, 104f), Offset(120f, 100f))), Color(0xFF9FC2F7), style = stroke)
                 }
                 // Chez le client.
                 drawCircle(Nexis.navy, 12f, Offset(250f, 64f))
