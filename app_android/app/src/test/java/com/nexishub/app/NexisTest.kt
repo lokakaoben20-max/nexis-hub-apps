@@ -112,6 +112,25 @@ class PictogrammesTest {
     }
 
     @Test
+    fun threeQuickTapsInTheVoidOpenTheRequestButton() {
+        val detector = com.nexishub.app.screens.ConfusedTapDetector()
+        assertFalse(detector.onTap(0))
+        assertFalse(detector.onTap(1_000))
+        assertTrue(detector.onTap(2_000))
+        // La série repart de zéro après avoir ouvert le bouton.
+        assertFalse(detector.onTap(2_500))
+    }
+
+    @Test
+    fun slowTapsInTheVoidAreNotConfusion() {
+        val detector = com.nexishub.app.screens.ConfusedTapDetector()
+        assertFalse(detector.onTap(0))
+        assertFalse(detector.onTap(3_000))
+        assertFalse(detector.onTap(6_000))
+        assertFalse(detector.onTap(9_500))
+    }
+
+    @Test
     fun loaderShowsTenDistinctServiceIcons() {
         assertEquals(10, com.nexishub.app.ui.LOADER_ICONS.distinct().size)
     }

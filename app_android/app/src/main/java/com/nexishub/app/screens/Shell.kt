@@ -60,6 +60,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import android.os.SystemClock
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.input.pointer.pointerInput
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -114,6 +121,33 @@ fun Shell(start: Capture?) {
     var tab by rememberSaveable { mutableIntStateOf(start?.tab ?: 0) }
     var picking by remember { mutableStateOf(start?.picker == true) }
     var comingSoon by remember { mutableStateOf<String?>(null) }
+    val showFab = tab <= 1
+    // « Demander un service » reste un « + » compact. Il s'ouvre quelques
+    // secondes pour se présenter : de temps en temps quand la personne a déjà
+    // des missions (sinon la carte de l'accueil porte déjà ce bouton), et dès
+    // qu'elle tape plusieurs fois dans le vide, comme si elle cherchait quoi faire.
+    var hasMissions by rememberSaveable { mutableStateOf(false) }
+    var fabOpen by remember { mutableStateOf(false) }
+    var hintsShown by rememberSaveable { mutableIntStateOf(0) }
+    val scope = rememberCoroutineScope()
+    var hintJob by remember { mutableStateOf<Job?>(null) }
+    val confusedTaps = remember { ConfusedTapDetector() }
+    fun openFabFor(durationMs: Long) {
+        hintJob?.cancel()
+        hintJob = scope.launch {
+            fabOpen = true
+            try { delay(durationMs) } finally { fabOpen = false }
+        }
+    }
+    LaunchedEffect(showFab, hasMissions) {
+        if (!showFab || !hasMissions) return@LaunchedEffect
+        delay(FAB_FIRST_HINT_MS)
+        while (hintsShown < FAB_MAX_HINTS) {
+            hintsShown++
+            openFabFor(FAB_HINT_SHOWN_MS)
+            delay(FAB_HINT_SHOWN_MS + FAB_HINT_EVERY_MS)
+        }
+    }
 
     val items = listOf(
         Triple(app.t("navHome"), Icons.Rounded.Home, Icons.Outlined.Home),
@@ -140,10 +174,11 @@ fun Shell(start: Capture?) {
             }
         },
         floatingActionButton = {
-            if (tab <= 1) {
+            if (showFab) {
                 ExtendedFloatingActionButton(
                     onClick = { picking = true },
-                    icon = { Icon(Icons.Rounded.Add, contentDescription = null) },
+                    expanded = fabOpen,
+                    icon = { Icon(Icons.Rounded.Add, contentDescription = if (fabOpen) null else app.t("requestService")) },
                     text = { Text(app.t("requestService"), style = body(15, FontWeight.SemiBold)) },
                     containerColor = Nexis.brand,
                     contentColor = Color.White,
@@ -152,10 +187,21 @@ fun Shell(start: Capture?) {
             }
         },
     ) { padding ->
-        Box(Modifier.padding(bottom = padding.calculateBottomPadding())) {
+        Box(
+            Modifier.padding(bottom = padding.calculateBottomPadding())
+                // Seules les touches qui ne tombent sur aucun bouton arrivent ici.
+                .pointerInput(showFab) {
+                    detectTapGestures {
+                        if (showFab && confusedTaps.onTap(SystemClock.uptimeMillis())) openFabFor(FAB_CONFUSED_SHOWN_MS)
+                    }
+                },
+        ) {
             when (tab) {
-                0 -> HomeTab(onPick = { picking = true }, onTab = { tab = it }, onComingSoon = { comingSoon = it })
-                1 -> MissionsTab(onComingSoon = { comingSoon = it })
+                0 -> HomeTab(
+                    onPick = { picking = true }, onTab = { tab = it }, onComingSoon = { comingSoon = it },
+                    onMissions = { hasMissions = it },
+                )
+                1 -> MissionsTab(onComingSoon = { comingSoon = it }, onMissions = { hasMissions = it })
                 2 -> WalletTab()
                 else -> ProfileTab(onComingSoon = { comingSoon = it })
             }
@@ -168,6 +214,30 @@ fun Shell(start: Capture?) {
         ModalBottomSheet(onDismissRequest = { comingSoon = null }, containerColor = p.surface) {
             ComingSoonContent(heading) { comingSoon = null }
         }
+    }
+}
+
+/** Quand « Demander un service » s'ouvre pour se présenter : la première
+ * fois quelques secondes après l'arrivée, puis toutes les 90 secondes, au
+ * plus quatre fois par ouverture de l'app. */
+private const val FAB_FIRST_HINT_MS = 5_000L
+private const val FAB_HINT_SHOWN_MS = 3_500L
+private const val FAB_HINT_EVERY_MS = 90_000L
+private const val FAB_MAX_HINTS = 4
+private const val FAB_CONFUSED_SHOWN_MS = 4_000L
+
+/** Repère les touches « dans le vide » répétées : trois touches qui ne
+ * tombent sur aucun bouton en moins de quatre secondes. */
+class ConfusedTapDetector(private val taps: Int = 3, private val windowMs: Long = 4_000L) {
+    private val recent = ArrayDeque<Long>()
+
+    /** Vrai quand cette touche complète une série ; la série repart alors de zéro. */
+    fun onTap(nowMs: Long): Boolean {
+        recent.addLast(nowMs)
+        while (recent.isNotEmpty() && nowMs - recent.first() > windowMs) recent.removeFirst()
+        if (recent.size < taps) return false
+        recent.clear()
+        return true
     }
 }
 
@@ -196,7 +266,7 @@ fun TabScaffold(heading: String, actions: @Composable () -> Unit = {}, content: 
 // Accueil
 
 @Composable
-private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (String) -> Unit) {
+private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (String) -> Unit, onMissions: (Boolean) -> Unit) {
     val app = LocalApp.current
     val p = LocalPalette.current
     var profile by remember { mutableStateOf<Profile?>(null) }
@@ -207,6 +277,7 @@ private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (Str
         profile = app.repository.profile()
         wallet = app.repository.wallet()
         missions = app.repository.missions()
+        onMissions(missions.isNotEmpty())
     }
     val greeting = profile?.let {
         app.t(if (LocalTime.now().hour < 12) "helloHome" else "eveningHome", "name" to it.firstName)
@@ -373,12 +444,15 @@ fun WalletCard(wallet: Wallet) {
 // Missions
 
 @Composable
-private fun MissionsTab(onComingSoon: (String) -> Unit) {
+private fun MissionsTab(onComingSoon: (String) -> Unit, onMissions: (Boolean) -> Unit) {
     val app = LocalApp.current
     val p = LocalPalette.current
     var missions by remember { mutableStateOf(emptyList<Mission>()) }
     var showDone by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(app.revision) { missions = app.repository.missions() }
+    LaunchedEffect(app.revision) {
+        missions = app.repository.missions()
+        onMissions(missions.isNotEmpty())
+    }
     val list = if (showDone) missions.filter { it.status == MissionStatus.COMPLETED } else missions.filter { it.isActive }
     TabScaffold(app.t("myMissions")) { padding ->
         LazyColumn(
