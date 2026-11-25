@@ -16,10 +16,14 @@ struct ShellView: View {
     var body: some View {
         TabView(selection: $tab) {
             Tab(app.t("navHome"), systemImage: "house", value: AppTab.home) {
-                HomeView(onPickService: { picking = true }, onTab: { tab = $0 })
+                if app.providerSpace {
+                    ProviderHomeView(onTab: { tab = $0 })
+                } else {
+                    HomeView(onPickService: { picking = true }, onTab: { tab = $0 })
+                }
             }
             Tab(app.t("navMissions"), systemImage: "list.bullet.clipboard", value: AppTab.missions) {
-                MissionsView()
+                if app.providerSpace { ProviderMissionsView() } else { MissionsView() }
             }
             Tab(app.t("navWallet"), systemImage: "wallet.bifold", value: AppTab.wallet) {
                 WalletView()
@@ -35,8 +39,18 @@ struct ShellView: View {
             case "wallet": tab = .wallet
             case "profile": tab = .profile
             case "services": picking = true
+            case let capture? where MissionRoute.providerCaptures.contains(capture):
+                app.providerSpace = true
+            case let capture? where MissionRoute.forCapture(capture) != nil: tab = .missions
             default: break
             }
+        }
+        // Changer d'espace ramène à son accueil.
+        .onChange(of: app.providerSpace) { tab = .home }
+        .onChange(of: app.requestedTab) { _, requested in
+            guard let requested else { return }
+            tab = requested
+            app.requestedTab = nil
         }
         .sheet(isPresented: $picking) {
             ServicePickerView(onRequested: {
@@ -58,7 +72,10 @@ private struct RequestServiceAccessory: ViewModifier {
     @Binding var open: Bool
 
     func body(content: Content) -> some View {
-        if #available(iOS 26.0, *) {
+        // Côté prestataire, rien à demander : pas d'accessoire.
+        if app.providerSpace {
+            content
+        } else if #available(iOS 26.0, *) {
             content
                 .tabBarMinimizeBehavior(.onScrollDown)
                 .tabViewBottomAccessory {

@@ -136,6 +136,7 @@ final class PictogrammesTests: XCTestCase {
     }
 }
 
+@MainActor
 final class FlowsTests: XCTestCase {
     private func refusal(_ block: () async throws -> Void) async -> String? {
         do { try await block(); return nil } catch let refusal as NexisRefusal { return refusal.code } catch { return "\(error)" }
@@ -229,5 +230,50 @@ final class FlowsTests: XCTestCase {
         XCTAssertNotNil(job.steps[.finished])
         let home = try await repo.providerHome()
         XCTAssertEqual(home.secured, Money(0, .cdf))
+    }
+}
+
+@MainActor
+final class PriceInputTests: XCTestCase {
+    func testFrancsAreWholeAndPositive() {
+        XCTAssertEqual(PriceInput.parse("25 000", .cdf), Money(25_000, .cdf))
+        XCTAssertNil(PriceInput.parse("0", .cdf))
+        XCTAssertNil(PriceInput.parse("12,5", .cdf))
+        XCTAssertNil(PriceInput.parse("", .cdf))
+    }
+
+    func testDollarsKeepAtMostTwoDecimals() {
+        XCTAssertEqual(PriceInput.parse("12,5", .usd), Money(1_250, .usd))
+        XCTAssertEqual(PriceInput.parse("45", .usd), Money(4_500, .usd))
+        XCTAssertEqual(PriceInput.parse("0.05", .usd), Money(5, .usd))
+        XCTAssertNil(PriceInput.parse("1.234", .usd))
+        XCTAssertNil(PriceInput.parse("0,00", .usd))
+        XCTAssertNil(PriceInput.parse("1.2.3", .usd))
+    }
+
+    func testFrancsAreGroupedWhileTyping() {
+        XCTAssertEqual(PriceInput.typed("25000", .cdf), "25 000")
+        XCTAssertEqual(PriceInput.typed("1 2345 67", .cdf), "1 234 567")
+        XCTAssertEqual(PriceInput.typed("12a,5", .usd), "12,5")
+    }
+}
+
+@MainActor
+final class DatesTests: XCTestCase {
+    func testClockReadsLikeKinshasa() {
+        let app = AppModel(repository: DemoRepository(), language: "fr")
+        let calendar = Calendar.current
+        let nine = calendar.date(bySettingHour: 9, minute: 0, second: 0, of: .now)!
+        let late = calendar.date(bySettingHour: 20, minute: 41, second: 0, of: .now)!
+        XCTAssertEqual(app.clock(nine), "9 h")
+        XCTAssertEqual(app.clock(late), "20 h 41")
+        app.language = "en"
+        XCTAssertEqual(app.clock(late), "8:41 pm")
+    }
+
+    func testDaysLeftCountsWholeDays() {
+        let now = Date.now
+        XCTAssertEqual(daysLeft(until: now.addingTimeInterval(70 * 3600), now: now), 3)
+        XCTAssertEqual(daysLeft(until: now.addingTimeInterval(-60), now: now), 0)
     }
 }
