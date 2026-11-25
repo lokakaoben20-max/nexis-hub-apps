@@ -232,3 +232,53 @@ class FlowsTest {
         assertEquals(Money(0, Currency.CDF), repo.providerHome().secured)
     }
 }
+
+class PriceInputTest {
+    private val parse = com.nexishub.app.screens.PriceInput::parse
+    private val typed = com.nexishub.app.screens.PriceInput::typed
+
+    @Test
+    fun francsAreWholeAndPositive() {
+        assertEquals(Money(25_000, Currency.CDF), parse("25 000", Currency.CDF))
+        assertEquals(null, parse("0", Currency.CDF))
+        assertEquals(null, parse("12,5", Currency.CDF))
+        assertEquals(null, parse("", Currency.CDF))
+    }
+
+    @Test
+    fun dollarsKeepAtMostTwoDecimals() {
+        assertEquals(Money(1_250, Currency.USD), parse("12,5", Currency.USD))
+        assertEquals(Money(4_500, Currency.USD), parse("45", Currency.USD))
+        assertEquals(Money(5, Currency.USD), parse("0.05", Currency.USD))
+        assertEquals(null, parse("1.234", Currency.USD))
+        assertEquals(null, parse("0,00", Currency.USD))
+        assertEquals(null, parse("1.2.3", Currency.USD))
+    }
+
+    @Test
+    fun francsAreGroupedWhileTyping() {
+        assertEquals("25 000", typed("25000", Currency.CDF))
+        assertEquals("1 234 567", typed("1 2345 67", Currency.CDF))
+        assertEquals("12,5", typed("12a,5", Currency.USD))
+    }
+}
+
+class DatesTest {
+    private val zone = java.time.ZoneId.of("Africa/Kinshasa")
+    private fun at(hour: Int, minute: Int) =
+        java.time.LocalDate.of(2026, 11, 28).atTime(hour, minute).atZone(zone).toInstant()
+
+    @Test
+    fun clockReadsLikeKinshasa() {
+        assertEquals("9 h", com.nexishub.app.ui.clockText(at(9, 0), "fr", zone))
+        assertEquals("20 h 41", com.nexishub.app.ui.clockText(at(20, 41), "fr", zone))
+        assertEquals("8:41 pm", com.nexishub.app.ui.clockText(at(20, 41), "en", zone))
+    }
+
+    @Test
+    fun daysLeftCountsWholeDays() {
+        val now = java.time.Instant.parse("2026-11-25T10:00:00Z")
+        assertEquals(3, com.nexishub.app.ui.daysLeft(now.plusSeconds(70 * 3600L), now))
+        assertEquals(0, com.nexishub.app.ui.daysLeft(now.minusSeconds(60), now))
+    }
+}
