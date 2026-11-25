@@ -88,6 +88,11 @@ class DemoRepositoryTest {
     }
 
     @Test
+    fun demoHasNoNotificationsYet() = runBlocking {
+        assertTrue(DemoRepository().notifications().isEmpty())
+    }
+
+    @Test
     fun sendCodeAcceptsValidNumberOnOfferedChannel() = runBlocking {
         DemoRepository().sendCode("+243812345678", com.nexishub.app.data.CodeChannel.WHATSAPP)
     }

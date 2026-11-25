@@ -23,6 +23,12 @@ import androidx.compose.material.icons.automirrored.rounded.ListAlt
 import androidx.compose.material.icons.outlined.AccountBalanceWallet
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material3.Badge
+import androidx.compose.material3.BadgedBox
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import com.nexishub.app.data.AppNotification
 import androidx.compose.material.icons.rounded.AccountBalanceWallet
 import androidx.compose.material.icons.rounded.AccountCircle
 import androidx.compose.material.icons.rounded.Add
@@ -273,11 +279,14 @@ private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (Str
     var wallet by remember { mutableStateOf(Wallet.EMPTY) }
     var missions by remember { mutableStateOf(emptyList<Mission>()) }
     var showDone by rememberSaveable { mutableStateOf(false) }
+    var notifications by remember { mutableStateOf(emptyList<AppNotification>()) }
+    var showNotifications by remember { mutableStateOf(false) }
     LaunchedEffect(app.revision) {
         profile = app.repository.profile()
         wallet = app.repository.wallet()
         missions = app.repository.missions()
         onMissions(missions.isNotEmpty())
+        notifications = app.repository.notifications()
     }
     val greeting = profile?.let {
         app.t(if (LocalTime.now().hour < 12) "helloHome" else "eveningHome", "name" to it.firstName)
@@ -285,7 +294,24 @@ private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (Str
     val list = if (showDone) missions.filter { it.status == MissionStatus.COMPLETED } else missions.filter { it.isActive }
     val shown = 2
 
-    TabScaffold(greeting) { padding ->
+    TabScaffold(
+        greeting,
+        actions = {
+            // La cloche : un point rouge quand une notification n'a pas été lue.
+            IconButton(onClick = { showNotifications = true }) {
+                BadgedBox(badge = { if (notifications.any { !it.read }) Badge(containerColor = Nexis.danger) }) {
+                    Icon(Icons.Outlined.Notifications, contentDescription = app.t("notifications"), tint = p.ink)
+                }
+            }
+            // Le rond du profil (initiales tant qu'il n'y a pas de photo) mène à l'onglet Profil.
+            profile?.let { me ->
+                IconButton(
+                    onClick = { onTab(3) },
+                    modifier = Modifier.padding(end = 8.dp).semantics { contentDescription = app.t("navProfile") },
+                ) { InitialsAvatar(me.initials, size = 34.dp) }
+            }
+        },
+    ) { padding ->
         LazyColumn(
             contentPadding = PaddingValues(start = 18.dp, end = 18.dp, top = padding.calculateTopPadding(), bottom = 96.dp),
             verticalArrangement = Arrangement.spacedBy(22.dp),
@@ -332,6 +358,7 @@ private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (Str
             }
         }
     }
+    if (showNotifications) NotificationsSheet(notifications) { showNotifications = false }
 }
 
 @Composable
@@ -442,6 +469,50 @@ fun WalletCard(wallet: Wallet) {
 }
 
 // Missions
+
+/** Les notifications : la liste, ou un écran vide tant qu'il n'y en a pas. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun NotificationsSheet(items: List<AppNotification>, onDismiss: () -> Unit) {
+    val app = LocalApp.current
+    val p = LocalPalette.current
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = p.bg,
+    ) {
+        Column(Modifier.fillMaxSize().padding(horizontal = 18.dp)) {
+            Text(app.t("notifications"), style = title(24, color = p.ink), modifier = Modifier.padding(top = 4.dp, bottom = 16.dp))
+            if (items.isEmpty()) {
+                Column(
+                    Modifier.fillMaxWidth().padding(top = 72.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    Box(Modifier.size(72.dp).clip(CircleShape).background(p.soft), contentAlignment = Alignment.Center) {
+                        Icon(Icons.Outlined.Notifications, contentDescription = null, tint = p.accent, modifier = Modifier.size(34.dp))
+                    }
+                    Text(app.t("noMissions"), style = body(16, color = p.muted), textAlign = TextAlign.Center)
+                }
+            } else {
+                LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp), contentPadding = PaddingValues(bottom = 32.dp)) {
+                    items(items, key = { it.id }) { item ->
+                        Column(
+                            Modifier.fillMaxWidth().nexisCard(p)
+                                .background(if (item.read) Color.Transparent else p.soft, RoundedCornerShape(20.dp))
+                                .padding(16.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp),
+                        ) {
+                            Text(item.title, style = body(15, FontWeight.SemiBold, p.ink))
+                            Text(item.body, style = body(14, color = p.muted))
+                            Text(app.day(item.at), style = body(12, color = p.muted))
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 @Composable
 private fun MissionsTab(onComingSoon: (String) -> Unit, onMissions: (Boolean) -> Unit) {
