@@ -20,7 +20,7 @@ final class AppModel {
     /// l'ouvre puis l'efface.
     var requestedTab: AppTab?
     /// Onglets dont un écran de mission est ouvert : l'accessoire « Demander
-    /// un service » s'y range, comme la barre d'onglets. */
+    /// un service » s'y range, comme la barre d'onglets.
     var openFlowTabs: Set<AppTab> = []
 
     /// Écran ouvert d'emblée pour les captures de la CI (versions de
