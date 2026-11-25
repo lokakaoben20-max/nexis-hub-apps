@@ -69,7 +69,7 @@ enum class MovementKind { PAYMENT, REFUND, RELEASE, DEPOSIT, WITHDRAWAL }
 data class AppNotification(
     val id: String,
     val title: String,
-    val body: String,
+    val message: String,
     val at: Instant,
     val read: Boolean,
 )

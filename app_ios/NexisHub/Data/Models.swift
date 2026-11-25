@@ -89,7 +89,7 @@ enum MovementKind: Hashable {
 struct AppNotification: Identifiable, Hashable {
     let id: String
     let title: String
-    let body: String
+    let message: String
     let when: Date
     let read: Bool
 }

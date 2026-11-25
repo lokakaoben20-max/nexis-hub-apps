@@ -291,14 +291,11 @@ struct NotificationsView: View {
                     Text(app.t("noMissions"))
                 }
             } else {
-                List(items) { item in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(item.title).font(.body(15, .semibold, relativeTo: .headline))
-                        Text(item.body).font(.body(14, relativeTo: .subheadline)).foregroundStyle(Nexis.muted)
-                        Text(app.day(item.when)).font(.body(12, relativeTo: .caption)).foregroundStyle(Nexis.muted)
+                List {
+                    ForEach(items) { (item: AppNotification) in
+                        NotificationRow(item: item)
+                            .listRowBackground(item.read ? Nexis.surface : Nexis.soft)
                     }
-                    .padding(.vertical, 4)
-                    .listRowBackground(item.read ? Nexis.surface : Nexis.soft)
                 }
                 .scrollContentBackground(.hidden)
             }
@@ -307,5 +304,19 @@ struct NotificationsView: View {
         .background(Nexis.bg)
         .navigationTitle(app.t("notifications"))
         .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+private struct NotificationRow: View {
+    @Environment(AppModel.self) private var app
+    let item: AppNotification
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(item.title).font(.body(15, .semibold, relativeTo: .headline))
+            Text(item.message).font(.body(14, relativeTo: .subheadline)).foregroundStyle(Nexis.muted)
+            Text(app.day(item.when)).font(.body(12, relativeTo: .caption)).foregroundStyle(Nexis.muted)
+        }
+        .padding(.vertical, 4)
     }
 }

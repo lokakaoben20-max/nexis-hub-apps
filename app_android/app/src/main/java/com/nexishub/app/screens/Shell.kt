@@ -504,7 +504,7 @@ private fun NotificationsSheet(items: List<AppNotification>, onDismiss: () -> Un
                             verticalArrangement = Arrangement.spacedBy(4.dp),
                         ) {
                             Text(item.title, style = body(15, FontWeight.SemiBold, p.ink))
-                            Text(item.body, style = body(14, color = p.muted))
+                            Text(item.message, style = body(14, color = p.muted))
                             Text(app.day(item.at), style = body(12, color = p.muted))
                         }
                     }
