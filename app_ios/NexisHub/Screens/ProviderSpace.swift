@@ -110,6 +110,8 @@ struct ProviderHomeView: View {
             }
             .background(Nexis.bg)
             .navigationTitle(greeting)
+            // « Bonjour, Ben » reste à gauche quand on fait défiler (choix de Ben).
+            .toolbarTitleDisplayMode(.inlineLarge)
             .missionDestinations()
         }
         .missionFlow(flow, tab: .home)

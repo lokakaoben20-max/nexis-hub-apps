@@ -37,6 +37,8 @@ struct HomeView: View {
             }
             .background(Nexis.bg)
             .navigationTitle(greeting)
+            // « Bonjour, Ben » reste à gauche quand on fait défiler (choix de Ben).
+            .toolbarTitleDisplayMode(.inlineLarge)
             .toolbar {
                 ToolbarItemGroup(placement: .topBarTrailing) {
                     if !ShellView.hasAccessory {

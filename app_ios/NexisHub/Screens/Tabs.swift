@@ -210,6 +210,7 @@ struct ProfileView: View {
                 Section {
                     Button(role: .destructive) { app.signOut() } label: {
                         Text(app.t("signOut")).font(.body(16, .semibold))
+                            .frame(maxWidth: .infinity)
                     }
                 }
             }

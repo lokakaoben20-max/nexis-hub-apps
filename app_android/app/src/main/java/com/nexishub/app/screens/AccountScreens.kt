@@ -127,6 +127,7 @@ import com.nexishub.app.ui.PrimaryButton
 import com.nexishub.app.ui.SectionTitle
 import com.nexishub.app.ui.ServiceTile
 import com.nexishub.app.ui.body
+import com.nexishub.app.ui.clock
 import com.nexishub.app.ui.nexisCard
 import com.nexishub.app.ui.pick
 import com.nexishub.app.ui.place
@@ -152,6 +153,10 @@ fun AppModel.longDate(date: LocalDate): String =
     date.format(DateTimeFormatter.ofPattern(if (language == "en") "MM/dd/yyyy" else "dd/MM/yyyy", Locale.ROOT))
 
 fun AppModel.longDate(time: Instant): String = longDate(time.atZone(ZoneId.systemDefault()).toLocalDate())
+
+/** « aujourd'hui 1 h 30 » : l'heure seule se lirait comme une durée. */
+fun AppModel.lastSeen(time: Instant): String =
+    if (time.atZone(ZoneId.systemDefault()).toLocalDate() == LocalDate.now()) "${t("today").lowercase()} ${clock(time)}" else stamp(time)
 
 @Composable
 private fun Heading(text: String) {
@@ -331,7 +336,7 @@ private fun DeviceCard(device: AppDevice, actions: @Composable () -> Unit = {}) 
                 Text(device.label, style = body(15, FontWeight.Bold, p.ink))
                 Text(app.t("devicesAdded", "date" to app.longDate(device.addedAt)), style = body(13, color = p.muted))
                 if (!device.isCurrent && device.lastSeenAt != null) {
-                    Text(app.t("devicesLastSeen", "when" to app.stamp(device.lastSeenAt)), style = body(13, color = p.muted))
+                    Text(app.t("devicesLastSeen", "when" to app.lastSeen(device.lastSeenAt)), style = body(13, color = p.muted))
                 }
             }
         }
@@ -453,11 +458,11 @@ fun HelpScreen() {
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     ServiceTile(mission, 44.dp)
-                    Column(Modifier.weight(1f).padding(horizontal = 12.dp)) {
+                    Column(Modifier.weight(1f).padding(horizontal = 12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         Text(app.place(mission), style = body(15, FontWeight.Bold, p.ink))
                         mission.providerName?.let { Text(it, style = body(13, color = p.muted)) }
+                        PaymentPill(mission.payment)
                     }
-                    PaymentPill(mission.payment)
                     Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, contentDescription = null, tint = p.muted)
                 }
             }
@@ -794,15 +799,9 @@ private fun IdentityPhotoCard(
             }
             if (data != null) Icon(Icons.Rounded.CheckCircle, contentDescription = null, tint = Nexis.ok)
         }
-        Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            Box(Modifier.weight(1f)) {
-                OutlineButton(app.t(if (data == null) "becomeTakePhoto" else "becomeRetake"), { camera.launch(shotUri) }, icon = Icons.Rounded.PhotoCamera)
-            }
-            Box(Modifier.weight(1f)) {
-                OutlineButton(app.t("becomeChoosePhoto"), {
-                    gallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-                }, icon = Icons.Rounded.PhotoLibrary)
-            }
-        }
+        OutlineButton(app.t(if (data == null) "becomeTakePhoto" else "becomeRetake"), { camera.launch(shotUri) }, icon = Icons.Rounded.PhotoCamera)
+        OutlineButton(app.t("becomeChoosePhoto"), {
+            gallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+        }, icon = Icons.Rounded.PhotoLibrary)
     }
 }

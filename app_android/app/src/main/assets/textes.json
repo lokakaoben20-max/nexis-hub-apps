@@ -1035,6 +1035,11 @@
   "fr": "Ce numéro ne semble pas être un numéro congolais.",
   "ln": "Nimero oyo emonani lokola nimero ya Kongó te."
  },
+ "numberVerified": {
+  "en": "{phone} verified",
+  "fr": "{phone} vérifié",
+  "ln": "{phone} eyekwami"
+ },
  "offService": {
   "en": "Off duty",
   "fr": "Hors service",

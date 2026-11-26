@@ -97,6 +97,7 @@ enum class Capture(
 ) {
     WELCOME(false, entry = "welcome"),
     PHONE(false, entry = "phone"),
+    CODE(false, entry = "code"),
     SIGNUP(false, entry = "signup"),
     HOME(true, tab = 0),
     MISSIONS(true, tab = 1),

@@ -49,12 +49,18 @@ struct ProfileInfoView: View {
                 .listRowBackground(Color.clear)
             }
             Section {
-                TextField(app.t("signupFirstName"), text: $firstName)
-                    .textContentType(.givenName)
-                    .textInputAutocapitalization(.words)
-                TextField(app.t("signupLastName"), text: $lastName)
-                    .textContentType(.familyName)
-                    .textInputAutocapitalization(.words)
+                LabeledContent(app.t("signupFirstName")) {
+                    TextField(app.t("signupFirstName"), text: $firstName)
+                        .textContentType(.givenName)
+                        .textInputAutocapitalization(.words)
+                        .multilineTextAlignment(.trailing)
+                }
+                LabeledContent(app.t("signupLastName")) {
+                    TextField(app.t("signupLastName"), text: $lastName)
+                        .textContentType(.familyName)
+                        .textInputAutocapitalization(.words)
+                        .multilineTextAlignment(.trailing)
+                }
                 Picker(app.t("commune"), selection: $commune) {
                     ForEach(app.repository.communes, id: \.self) { item in
                         Text(item).tag(String?.some(item))
@@ -197,7 +203,7 @@ private struct DeviceCard<Actions: View>: View {
                     Text(app.t("devicesAdded", ["date": app.longDate(device.addedAt)]))
                         .font(.body(13, relativeTo: .footnote)).foregroundStyle(Nexis.muted)
                     if let seen = device.lastSeenAt, !device.isCurrent {
-                        Text(app.t("devicesLastSeen", ["when": app.stamp(seen)]))
+                        Text(app.t("devicesLastSeen", ["when": app.lastSeen(seen)]))
                             .font(.body(13, relativeTo: .footnote)).foregroundStyle(Nexis.muted)
                     }
                 }
@@ -219,6 +225,11 @@ extension DeviceCard where Actions == EmptyView {
 }
 
 extension AppModel {
+    /// « aujourd'hui 1 h 30 » : l'heure seule se lirait comme une durée.
+    func lastSeen(_ date: Date) -> String {
+        Calendar.current.isDateInToday(date) ? "\(t("today").lowercased()) \(clock(date))" : stamp(date)
+    }
+
     /// « 20/11/2026 » (dans l'ordre de la langue).
     func longDate(_ date: Date) -> String {
         date.formatted(.dateTime.day().month(.twoDigits).year().locale(locale))
@@ -333,14 +344,14 @@ struct HelpView: View {
                         Button { flow.push(.dispute(mission.id)) } label: {
                             HStack(spacing: 12) {
                                 ServiceTile(mission, size: 44)
-                                VStack(alignment: .leading, spacing: 3) {
+                                VStack(alignment: .leading, spacing: 4) {
                                     Text(app.place(mission)).font(.body(15.5, .bold)).foregroundStyle(Nexis.ink)
                                     if let name = mission.providerName {
                                         Text(name).font(.body(13, relativeTo: .footnote)).foregroundStyle(Nexis.muted)
                                     }
+                                    PaymentPill(state: mission.payment)
                                 }
                                 Spacer(minLength: 8)
-                                PaymentPill(state: mission.payment)
                                 Image(systemName: "chevron.right").font(.system(size: 13, weight: .semibold))
                                     .foregroundStyle(Nexis.muted)
                             }
@@ -760,7 +771,7 @@ private struct IdentityPhotoCard: View {
                         .accessibilityHidden(true)
                 }
             }
-            HStack(spacing: 10) {
+            VStack(spacing: 10) {
                 if UIImagePickerController.isSourceTypeAvailable(.camera) {
                     Button { shooting = true } label: {
                         Label(data == nil ? app.t("becomeTakePhoto") : app.t("becomeRetake"), systemImage: "camera")
