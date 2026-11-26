@@ -109,9 +109,7 @@ struct ProviderHomeView: View {
                 if let home { content(home) } else { FlowLoading(label: app.t("spaceProvider")) }
             }
             .background(Nexis.bg)
-            .navigationTitle(greeting)
-            // « Bonjour, Ben » reste à gauche quand on fait défiler (choix de Ben).
-            .toolbarTitleDisplayMode(.inlineLarge)
+            .greetingHeader(greeting)
             .missionDestinations()
         }
         .missionFlow(flow, tab: .home)
