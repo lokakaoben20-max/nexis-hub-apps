@@ -357,7 +357,7 @@ private struct GreetingHeader<Trailing: View>: ViewModifier {
             .safeAreaInset(edge: .top, spacing: 0) {
                 HStack(spacing: 10) {
                     Text(title)
-                        .font(.title(24, .semibold, relativeTo: .title))
+                        .font(.title(24, .semibold, relativeTo: .title1))
                         .foregroundStyle(Nexis.ink)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
