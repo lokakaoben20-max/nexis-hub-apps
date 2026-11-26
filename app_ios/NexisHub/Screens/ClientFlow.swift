@@ -27,6 +27,7 @@ enum MissionRoute: Hashable {
     case help
     case legal
     case becomeProvider
+    case security
     case portfolio
 
     /// Écrans ouverts d'emblée pour les captures de la CI.
@@ -50,6 +51,7 @@ enum MissionRoute: Hashable {
         case "become", PortfolioDemo.step: return [.becomeProvider]
         case PortfolioDemo.profile, PortfolioDemo.locked: return [.portfolio]
         case let capture? where IdentityDemo.captures.contains(capture): return [.becomeProvider]
+        case "security": return [.security]
         default: return nil
         }
     }
@@ -59,7 +61,8 @@ enum MissionRoute: Hashable {
 
     /// Captures qui se font depuis l'onglet Profil.
     static let profileCaptures: Set<String> = Set(["info", "devices", "alerts", "help", "legal", "become",
-                                                   PortfolioDemo.step, PortfolioDemo.profile, PortfolioDemo.locked])
+                                                   PortfolioDemo.step, PortfolioDemo.profile, PortfolioDemo.locked,
+                                                   "security"])
         .union(IdentityDemo.captures)
 }
 
@@ -166,6 +169,7 @@ private struct MissionScreen: View {
         case .help: HelpView()
         case .legal: LegalView()
         case .becomeProvider: BecomeProviderView()
+        case .security: SecuritySettingsView()
         case .portfolio: PortfolioView()
         }
     }
@@ -608,7 +612,13 @@ struct PayView: View {
         }
         .bottomActions {
             Button {
-                if let chosen { flow.push(.pending(mission: mission.id, quote: quote.id, via: chosen)) }
+                guard let chosen else { return }
+                // Le code ou Face ID d'abord : sans lui, rien ne part.
+                Task {
+                    if await app.confirmMoneyOut(app.t("guardPay", ["amount": amount, "name": quote.firstName])) {
+                        flow.push(.pending(mission: mission.id, quote: quote.id, via: chosen))
+                    }
+                }
             } label: {
                 WideLabel(text: app.t("payAmount", ["amount": amount]))
             }
@@ -764,7 +774,12 @@ struct ConfirmView: View {
             .flowScreen()
         }
         .bottomActions {
-            Button { Task { await confirm(mission, name) } } label: {
+            Button {
+                // Verser l'argent au prestataire : le code ou Face ID d'abord.
+                Task {
+                    if await app.confirmMoneyOut(app.t("guardRelease", ["name": name])) { await confirm(mission, name) }
+                }
+            } label: {
                 BusyLabel(text: app.t("yesDone"), systemImage: "checkmark", busy: busy)
             }
             .nxProminentButton()

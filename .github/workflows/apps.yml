@@ -105,10 +105,14 @@ jobs:
           for screen in tracking quotes showcase pay pending confirm report dispute decision provider request job info devices alerts help legal become become-identity become-wrong-side become-verso become-selfie become-review become-passport become-wrong-page become-portfolio portfolio portfolio-locked; do
             shoot "$screen" light fr
           done
+          for screen in protect protect-bio lock security; do
+            shoot "$screen" light fr
+          done
           shoot tracking dark fr
           shoot home dark fr
           shoot home light ln
           shoot welcome light en
+          shoot lock dark fr
       - name: Captures dans le journal
         if: always()
         run: |
