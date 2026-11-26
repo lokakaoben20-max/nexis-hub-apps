@@ -76,7 +76,7 @@ struct HomeView: View {
     }
 
     private var greeting: String {
-        guard let profile else { return "Nexis Hub" }
+        guard let profile else { return "NexisHub" }
         let hour = Calendar.current.component(.hour, from: .now)
         return app.t(hour < 12 ? "helloHome" : "eveningHome", ["name": profile.firstName])
     }

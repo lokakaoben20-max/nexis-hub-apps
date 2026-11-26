@@ -314,7 +314,7 @@ private fun HomeTab(onPick: () -> Unit, onTab: (Int) -> Unit, onComingSoon: (Str
     }
     val greeting = profile?.let {
         app.t(if (LocalTime.now().hour < 12) "helloHome" else "eveningHome", "name" to it.firstName)
-    } ?: "Nexis Hub"
+    } ?: "NexisHub"
     val list = if (showDone) missions.filter { it.status == MissionStatus.COMPLETED } else missions.filter { it.isActive }
     val shown = 2
 
