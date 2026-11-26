@@ -185,6 +185,7 @@ sealed interface MissionRoute {
     data object Help : MissionRoute
     data object Legal : MissionRoute
     data object BecomeProvider : MissionRoute
+    data object Security : MissionRoute
     data object Works : MissionRoute
 
     companion object {
@@ -208,6 +209,7 @@ sealed interface MissionRoute {
             "become", PortfolioDemo.STEP -> listOf(BecomeProvider)
             PortfolioDemo.PROFILE, PortfolioDemo.LOCKED -> listOf(Works)
             in IdentityDemo.codes -> listOf(BecomeProvider)
+            "security" -> listOf(Security)
             else -> null
         }
     }
@@ -349,6 +351,7 @@ private fun MissionScreen(route: MissionRoute) {
         MissionRoute.Help -> HelpScreen()
         MissionRoute.Legal -> LegalScreen()
         MissionRoute.BecomeProvider -> BecomeProviderScreen()
+        MissionRoute.Security -> SecurityScreen()
         MissionRoute.Works -> PortfolioScreen()
     }
 }
@@ -615,6 +618,7 @@ private fun PayScreen(missionId: Int, quoteId: Int) {
     var quote by remember { mutableStateOf<Quote?>(null) }
     var accounts by remember { mutableStateOf(emptyList<PayAccount>()) }
     var picked by remember { mutableStateOf<MobileOperator?>(null) }
+    val scope = rememberCoroutineScope()
     LaunchedEffect(app.revision) {
         mission = attempt { app.repository.mission(missionId) }
         quote = attempt { app.repository.quotes(missionId) }?.firstOrNull { it.id == quoteId }
@@ -630,7 +634,15 @@ private fun PayScreen(missionId: Int, quoteId: Int) {
         bottom = {
             PrimaryButton(
                 app.t("payAmount", "amount" to amount),
-                { chosen?.let { flow.push(MissionRoute.Pending(shown.id, chosenQuote.id, it)) } },
+                {
+                    // Le code ou l'empreinte d'abord : sans lui, rien ne part.
+                    chosen?.let { operator ->
+                        scope.launch {
+                            val reason = app.t("guardPay", "amount" to amount, "name" to chosenQuote.firstName)
+                            if (app.confirmMoneyOut(reason)) flow.push(MissionRoute.Pending(shown.id, chosenQuote.id, operator))
+                        }
+                    }
+                },
                 enabled = chosen != null,
             )
         },
@@ -750,8 +762,10 @@ private fun ConfirmScreen(missionId: Int) {
         app.t("confirmAction"), onBack = flow::back,
         bottom = {
             PrimaryButton(app.t("yesDone"), {
-                busy = true
                 scope.launch {
+                    // Verser l'argent au prestataire : le code ou l'empreinte d'abord.
+                    if (!app.confirmMoneyOut(app.t("guardRelease", "name" to name))) return@launch
+                    busy = true
                     try {
                         app.repository.confirmDone(shown.id)
                         app.dataChanged()
