@@ -294,9 +294,6 @@ fun LanguageMenu(onBrand: Boolean = false) {
     }
 }
 
-/** Écran à grand titre (Unbounded) avec retour, contenu défilant et
- * bouton principal en bas. */
-@OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
 /** Cadre des écrans d'entrée (maquettes A2 à A4) : retour à gauche, langue
  * à droite, titre dans le contenu, bouton d'action en bas. */
 @OptIn(ExperimentalMaterial3Api::class)
