@@ -1,0 +1,1370 @@
+{
+  "@@locale": "fr",
+  "slogan": "Là où la confiance rencontre le service.",
+  "welcomeIntro": "Nous vous mettons en relation avec des professionnels de confiance",
+  "verifiedProvider": "Prestataire vérifié",
+  "start": "Commencer",
+  "haveAccount": "J'ai déjà un compte",
+  "signInTitle": "Connectez-vous",
+  "noAccountTitle": "Aucun compte trouvé",
+  "noAccountHint": "Vérifiez le numéro saisi ou créez un profil avec ce numéro.",
+  "changeLoginNumber": "Changer de numéro",
+  "yourNumber": "Votre numéro",
+  "yourNumberIntro": "Nous vous envoyons un code pour vérifier que c’est bien vous.",
+  "receiveCodeBy": "Recevoir le code par",
+  "whatsappSub": "Le code arrive en quelques secondes",
+  "telegramSub": "Avec le bot NexisHub",
+  "receiveCode": "Recevoir le code",
+  "codeSentTo": "Envoyé sur {channel} au {phone}.",
+  "@codeSentTo": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      },
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeBack": "Bon retour",
+  "hello": "Bonjour, {name}",
+  "@hello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "myWallets": "Mes portefeuilles",
+  "available": "Disponible",
+  "securedAmount": "{amount} sécurisés",
+  "@securedAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "hideAmounts": "Masquer les montants",
+  "showAmounts": "Afficher les montants",
+  "walletLocked": "{amount} bloqués pour vos missions en cours",
+  "@walletLocked": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "walletExplanation": "Cet argent est versé au prestataire uniquement après confirmation du client.",
+  "walletInfoLabel": "Pourquoi ce montant est-il bloqué ?",
+  "actionServices": "Services",
+  "actionDeposit": "Dépôt",
+  "actionWithdraw": "Retrait",
+  "actionHistory": "Historique",
+  "actionMore": "Plus",
+  "lastServices": "Dernières prestations",
+  "tabDone": "Terminées",
+  "tabOngoing": "En cours",
+  "navHome": "Accueil",
+  "navMissions": "Missions",
+  "navWallet": "Portefeuille",
+  "navProfile": "Profil",
+  "requestService": "Demander un service",
+  "firstRequestTitle": "De quoi avez-vous besoin ?",
+  "whichService": "Quel service ?",
+  "notInList": "Mon besoin n'est pas dans la liste",
+  "myMissions": "Mes missions",
+  "noMissions": "Rien ici pour l'instant.",
+  "statusPending": "En attente de devis",
+  "statusQuoted": "{count} devis reçus",
+  "@statusQuoted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "statusConfirmed": "Prestataire choisi",
+  "statusInProgress": "{name} est en route",
+  "@statusInProgress": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "statusAwaiting": "À confirmer",
+  "statusCompleted": "Terminée",
+  "statusCancelled": "Annulée",
+  "statusDisputed": "Litige en cours",
+  "compareQuotes": "Comparer les devis",
+  "viewQuotes": "Voir les devis",
+  "follow": "Suivre",
+  "paySecured": "Sécurisé par NexisHub",
+  "payReleased": "Versé au prestataire",
+  "payRefunded": "Remboursé",
+  "payBlocked": "Bloqué (litige)",
+  "payAvailable": "Disponible",
+  "movements": "Mouvements",
+  "seeAll": "Tout voir",
+  "today": "Aujourd'hui",
+  "yesterday": "Hier",
+  "comingSoon": "Bientôt dans l'app",
+  "comingSoonText": "Cet écran arrive dans une prochaine version.",
+  "ok": "Compris",
+  "phone": "Téléphone",
+  "commune": "Commune",
+  "language": "Langue",
+  "myDevices": "Mes appareils",
+  "help": "Aide",
+  "becomeProvider": "Devenir prestataire",
+  "becomeProviderSub": "Le même compte, le même portefeuille",
+  "signOut": "Se déconnecter",
+  "clientBadge": "Client",
+  "back": "Retour",
+  "editProfile": "Modifier",
+  "pickServiceHint": "Choisissez, nous nous occupons du reste.",
+  "otherNeed": "Autre",
+  "close": "Fermer",
+  "quotesPill": "{count} devis",
+  "waitingPill": "En attente",
+  "@quotesPill": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "legalTerms": "Conditions d'utilisation",
+  "legalPrivacy": "Politique de confidentialité",
+  "notReceived": "Pas reçu ?",
+  "resendIn": "Renvoyer dans {time}",
+  "resendNow": "Renvoyer le code",
+  "@resendIn": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "myInfo": "Mes informations",
+  "myInfoSub": "Nom, commune",
+  "devicesCount": "{count, plural, =1{1 appareil connecté} other{{count} appareils connectés}}",
+  "helpDisputes": "Aide et litiges",
+  "helpDisputesSub": "Un souci sur une mission",
+  "spaceClient": "Client",
+  "spaceProvider": "Prestataire",
+  "@devicesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "bestRated": "Le mieux noté",
+  "chooseProvider": "Choisir {name}",
+  "securedUntilDone": "Votre argent reste sécurisé par NexisHub jusqu'à ce que vous confirmiez que c'est fait.",
+  "payTitle": "Payer",
+  "payWith": "Payer avec",
+  "addNumber": "Ajouter un numéro",
+  "paySecuredNote": "Sécurisé par NexisHub : {name} reçoit l'argent quand vous confirmez que c'est fait.",
+  "payAmount": "Payer {amount}",
+  "pendingTitle": "Validez sur votre téléphone",
+  "pendingText": "{operator} vous envoie une demande de {amount}. Tapez votre code secret Mobile Money pour l'accepter.",
+  "pendingSent": "Demande envoyée à {operator}",
+  "pendingWaiting": "En attente de confirmation",
+  "pendingWithin": "Vous avez 5 minutes",
+  "pendingSecured": "Argent sécurisé par NexisHub",
+  "pendingNotify": "Nous prévenons {name} tout de suite",
+  "nothingReceived": "Je n'ai rien reçu",
+  "paymentTitle": "Paiement",
+  "trackTitle": "Suivi",
+  "distanceAway": "{name} est à {km} km",
+  "trackingOff": "Suivi non activé",
+  "stepPaid": "Payé",
+  "stepOnTheWay": "En route",
+  "stepOnTheWaySub": "Suivi de position activé",
+  "stepOnSite": "Sur place",
+  "stepWorkDone": "Travail terminé",
+  "stepConfirm": "Vous confirmez, {name} reçoit l'argent",
+  "confirmAction": "Confirmer",
+  "confirmQuestion": "{name} a terminé.\nC'est bien fait ?",
+  "confirmText": "Quand vous confirmez, NexisHub verse l'argent sécurisé à {name}.",
+  "paidTo": "Versé à {name}",
+  "amountFixed": "Montant fixé par NexisHub au paiement",
+  "report48h": "Un souci ? Vous avez 48 h pour le signaler. L'argent reste alors bloqué le temps que nous regardions avec vous deux.",
+  "yesDone": "Oui, c'est fait",
+  "reportProblem": "Signaler un problème",
+  "confirmedToast": "Merci ! {name} reçoit l'argent.",
+  "callLabel": "Appeler",
+  "messageLabel": "Écrire",
+  "@chooseProvider": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@paySecuredNote": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@payAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@pendingText": {
+    "placeholders": {
+      "operator": {
+        "type": "String"
+      },
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "@pendingSent": {
+    "placeholders": {
+      "operator": {
+        "type": "String"
+      }
+    }
+  },
+  "@pendingNotify": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@distanceAway": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "km": {
+        "type": "String"
+      }
+    }
+  },
+  "@stepConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmQuestion": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@paidTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmedToast": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "whatHappened": "Que s'est-il passé ?",
+  "reasonNotFinished": "Le travail n'est pas fini",
+  "reasonBadWork": "Le travail est mal fait",
+  "reasonNoShow": "Le prestataire n'est pas venu",
+  "reasonOther": "Autre problème",
+  "reportHint": "Racontez en quelques mots ce qui ne va pas.",
+  "addPhoto": "Ajouter une photo",
+  "reportFrozen": "Les {amount} sont bloqués le temps que nous regardions avec vous deux. Personne ne peut y toucher.",
+  "@reportFrozen": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "sendReport": "Envoyer le signalement",
+  "reportFailed": "Le signalement n'est pas parti. Réessayez dans un instant.",
+  "disputeTitle": "Litige",
+  "nobodyTouches": "Personne ne peut y toucher",
+  "youReported": "Vous avez signalé",
+  "photosCount": "{count, plural, =0{sans photo} =1{1 photo} other{{count} photos}}",
+  "@photosCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "providerReplied": "{name} a répondu",
+  "@providerReplied": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "nexisLooking": "NexisHub regarde",
+  "nexisLookingSub": "Réponse sous 48 h · nous pouvons vous appeler",
+  "decisionStep": "Décision et argent",
+  "decisionStepSub": "Versé, remboursé ou partagé",
+  "settleHint": "Vous pouvez encore vous arranger avec {name}. Si vous êtes d'accord, dites-le ici et nous clôturons le litige.",
+  "@settleHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "writeNexis": "Écrire à NexisHub",
+  "weSettled": "Nous nous sommes arrangés",
+  "disputeOver": "Litige terminé",
+  "outcomeRefundTitle": "Nous vous remboursons",
+  "outcomeRefundText": "Après avoir regardé le dossier et parlé avec {name}, NexisHub a décidé de vous rembourser. L'argent arrive dans votre portefeuille dans 3 jours si personne ne conteste.",
+  "@outcomeRefundText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "outcomeReleaseTitle": "L'argent va à {name}",
+  "@outcomeReleaseTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "outcomeReleaseText": "Après avoir regardé le dossier avec vous deux, NexisHub a décidé que l'argent revient à {name}. Il part dans 3 jours si personne ne conteste.",
+  "@outcomeReleaseText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "outcomeSplitTitle": "L'argent est partagé",
+  "outcomeSplitText": "Après avoir regardé le dossier avec vous deux, NexisHub a décidé de partager l'argent entre vous et {name}. Votre part arrive dans votre portefeuille dans 3 jours si personne ne conteste.",
+  "@outcomeSplitText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "toRefundYou": "À vous rembourser",
+  "forProvider": "Pour {name}",
+  "@forProvider": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "blockedDaysLeft": "{count, plural, =1{Bloqué (litige) · encore 1 jour} other{Bloqué (litige) · encore {count} jours}}",
+  "@blockedDaysLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contestHint": "{count, plural, =1{Pas d'accord ? Vous avez encore 1 jour pour demander à revoir la décision. L'argent reste bloqué pendant ce temps.} other{Pas d'accord ? Vous avez {count} jours pour demander à revoir la décision. L'argent reste bloqué pendant ce temps.}}",
+  "@contestHint": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "seeWallet": "Voir mon portefeuille",
+  "inService": "En service",
+  "offService": "Hors service",
+  "inServiceSub": "Vous recevez les demandes de {communes}",
+  "@inServiceSub": {
+    "placeholders": {
+      "communes": {
+        "type": "String"
+      }
+    }
+  },
+  "offServiceSub": "Vous ne recevez pas de nouvelles demandes",
+  "offServiceHint": "Active « En service » pour recevoir les demandes des clients.",
+  "andList": "{head} et {last}",
+  "@andList": {
+    "placeholders": {
+      "head": {
+        "type": "String"
+      },
+      "last": {
+        "type": "String"
+      }
+    }
+  },
+  "securedUntilConfirm": "{amount} sécurisés, versés quand le client confirme",
+  "@securedUntilConfirm": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "newRequests": "Nouvelles demandes",
+  "noRequests": "Pas de nouvelle demande pour l'instant.",
+  "jobsInProgress": "Missions en cours",
+  "newPill": "Nouveau",
+  "minutesAgo": "{count} min",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "hoursAgo": "{count} h",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quoteSentPill": "Devis envoyé",
+  "sendAQuote": "Envoyer un devis",
+  "sendTheQuote": "Envoyer le devis",
+  "yourPrice": "Votre prix",
+  "priceAsked": "Montant demandé au client",
+  "changeCurrency": "Changer de devise",
+  "yourSlot": "Votre créneau",
+  "otherSlot": "Autre",
+  "quoteSentToast": "Devis envoyé. Vous serez prévenu si le client le choisit.",
+  "quoteFailed": "Le devis n'est pas parti. Réessayez dans un instant.",
+  "actionFailed": "Cela n'a pas fonctionné. Réessayez dans un instant.",
+  "jobTitle": "Mission",
+  "jobToStart": "Payé, à vous de partir",
+  "jobOnTheWay": "En route",
+  "jobArrivalPending": "Arrivée à confirmer par {name}",
+  "@jobArrivalPending": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "jobOnSite": "Sur place",
+  "jobWaitingClient": "Terminé, {name} doit confirmer",
+  "@jobWaitingClient": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "shareLocation": "Partager ma position",
+  "shareLocationSub": "{name} voit la distance jusqu'à votre arrivée",
+  "@shareLocationSub": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "pStepPaid": "Client a payé",
+  "pStepLeft": "Je suis parti",
+  "pStepArrive": "J'arrive sur place",
+  "pStepOnSite": "Je suis sur place",
+  "pStepDone": "J'ai terminé",
+  "btnLeave": "Je pars",
+  "btnArrived": "Je suis arrivé",
+  "btnFinished": "J'ai terminé",
+  "callClient": "Appeler {name}",
+  "@callClient": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "arrivalWaiting": "{name} doit confirmer votre arrivée sur son téléphone. Vous pouvez aussi taper son code de présence.",
+  "@arrivalWaiting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "arrivalWaitingSub": "En attente de {name}",
+  "@arrivalWaitingSub": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "arrivalConfirmed": "Arrivée confirmée",
+  "presenceCode": "Code de présence du client",
+  "confirmCode": "Valider",
+  "wrongCode": "{count, plural, =1{Code incorrect. Encore 1 essai.} other{Code incorrect. Encore {count} essais.}}",
+  "@wrongCode": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "codeLocked": "Trop d'essais. Seul {name} peut maintenant confirmer votre arrivée.",
+  "@codeLocked": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "finishedNote": "{name} a 48 h pour confirmer ou signaler un problème. Sans réponse, l'argent vous est versé au bout de 48 h.",
+  "@finishedNote": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "smsSub": "Un message texte sur ce numéro",
+  "codeSentBySms": "Envoyé par SMS au {phone}.",
+  "@codeSentBySms": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "noCodeChannel": "Aucun canal n'est disponible pour le moment. Réessayez dans un instant.",
+  "numberNotCongolese": "Ce numéro ne semble pas être un numéro congolais.",
+  "neverAskCode": "Nous ne vous demanderons jamais ce code par téléphone ni par message.",
+  "enterCode": "Entrez le code",
+  "codeHint": "Valable 10 minutes. Ne le partagez avec personne.",
+  "codeSentToast": "Code envoyé par {channel}.",
+  "codeResentToast": "Nouveau code envoyé par {channel}.",
+  "receiveInstead": "Recevoir plutôt par {channel}",
+  "@receiveInstead": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "@codeSentToast": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "@codeResentToast": {
+    "placeholders": {
+      "channel": {
+        "type": "String"
+      }
+    }
+  },
+  "eveningHome": "Bonsoir, {name}",
+  "@eveningHome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "helloHome": "Bonjour, {name}",
+  "@helloHome": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "heldForMissions": "{amount} bloqués pour vos missions en cours",
+  "@heldForMissions": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "heldWhy": "Pourquoi ces fonds sont bloqués",
+  "heldTip": "Cet argent reste à vous. Il est mis de côté pour payer le professionnel quand la mission est terminée et que vous l'avez confirmée.",
+  "currency": "Devise",
+  "quickActions": "Actions rapides",
+  "reviewsCount": "{count} avis",
+  "@reviewsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "completedOn": "Terminée le {date}",
+  "@completedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "followMission": "Suivre la mission",
+  "seeMissions": "Voir les {count} missions",
+  "@seeMissions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "recentMovements": "Derniers mouvements",
+  "newBadge": "Nouveau",
+  "allServices": "Tous les services",
+  "searchService": "Rechercher un service",
+  "recents": "Récents",
+  "newAndRecommended": "Nouveaux et recommandés",
+  "requestedIn": "Demandé en {month}",
+  "@requestedIn": {
+    "placeholders": {
+      "month": {
+        "type": "String"
+      }
+    }
+  },
+  "requestedOn": "Demandé le {date}",
+  "@requestedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "addedThisWeek": "Ajouté cette semaine",
+  "recommendedForYou": "Recommandé pour vous",
+  "noServiceMatches": "Aucun service ne correspond.",
+  "cantFindService": "Vous ne trouvez pas votre service ?",
+  "cantFindHint": "Décrivez votre besoin avec vos mots, nous le transmettons à l'équipe.",
+  "serviceRequestDemo": "Cette demande est une simulation.",
+  "serviceRequestNoPay": "Vous ne payez rien à cette étape.",
+  "serviceRequestSaved": "Demande de test enregistrée",
+  "serviceRequestSavedText": "Retrouvez-la dans vos missions, sous « En attente de devis ».",
+  "describeNeed": "Décrire mon besoin",
+  "describeLead": "Dites-nous ce dont vous avez besoin avec vos mots. L'équipe NexisHub regarde votre demande et cherche le bon professionnel.",
+  "describeTypeLabel": "Quel type de service ?",
+  "describeTypeHint": "Par exemple : réparation de portail",
+  "describeTextLabel": "Décrivez votre besoin",
+  "describeTextHint": "Où, quoi, et pour quand si c'est urgent",
+  "optional": "facultatif",
+  "photos": "Photos",
+  "addShort": "Ajouter",
+  "describeNoPay": "Vous ne payez rien à cette étape. Vous êtes prévenu dans l'app dès que nous avons une réponse.",
+  "sendRequest": "Envoyer ma demande",
+  "requestSent": "Demande envoyée",
+  "requestSentText": "Nous avons bien reçu votre demande. Vous serez prévenu dans l'app, et sur WhatsApp ou Telegram, dès que nous avons une réponse.",
+  "backHome": "Retour à l'accueil",
+  "requestNotSent": "La demande n'est pas partie. Réessayez dans un instant.",
+  "notifications": "Notifications",
+  "notificationsSub": "Dans l'app",
+  "termsVersion": "Version du {date}",
+  "@termsVersion": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "securedByNexis": "Sécurisé par NexisHub",
+  "signupTitle": "Faisons connaissance",
+  "signupFirstName": "Prénom",
+  "signupLastName": "Nom",
+  "signupDemoNotice": "Inscription de démonstration. Utilisez des informations fictives.",
+  "signupReadTerms": "Lire les CGU",
+  "signupAcceptTerms": "J’ai lu et j’accepte les CGU",
+  "signupCreateProfile": "Créer mon profil",
+  "signupFailed": "Le profil n’a pas pu être créé. Vérifiez les informations et réessayez.",
+  "signupDemoTerms": "Document de démonstration. Cet écran sert à tester la lecture et l’acceptation des conditions. Les profils créés, les missions et les paiements de cet aperçu sont fictifs. Les informations de cette inscription sont effacées au rechargement de l’app.",
+  "nextStep": "Continuer",
+  "infoSave": "Enregistrer",
+  "infoSaved": "Vos informations sont enregistrées.",
+  "infoFailed": "Les informations n'ont pas pu être enregistrées. Vérifiez-les et réessayez.",
+  "infoPhoneVerified": "Numéro vérifié",
+  "infoPhoneLocked": "Votre numéro sert à vous connecter. Pour le changer, écrivez à NexisHub.",
+  "devicesThis": "Ce téléphone",
+  "devicesOthers": "Autres téléphones",
+  "devicesAdded": "Ajouté le {date}",
+  "@devicesAdded": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "devicesLastSeen": "Dernière activité : {when}",
+  "@devicesLastSeen": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "devicesMoneyIn": "{count, plural, =1{Sortie d'argent possible dans 1 heure} other{Sortie d'argent possible dans {count} heures}}",
+  "@devicesMoneyIn": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "devicesMoneyHint": "Par sécurité, un téléphone ajouté à votre compte attend 72 heures avant de pouvoir faire sortir de l'argent de votre portefeuille.",
+  "devicesNotMe": "Vous ne reconnaissez pas un téléphone ? Déconnectez-le tout de suite.",
+  "devicesSignOut": "Déconnecter ce téléphone",
+  "devicesSignOutTitle": "Déconnecter {name} ?",
+  "@devicesSignOutTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "devicesSignOutText": "Il ne pourra plus rien faire sur votre compte. Pour revenir, il faudra se reconnecter avec un code.",
+  "devicesSignedOut": "{name} est déconnecté.",
+  "@devicesSignedOut": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "notifAllowed": "Notifications autorisées",
+  "notifAllowedSub": "NexisHub peut vous prévenir sur ce téléphone.",
+  "notifOff": "Notifications coupées",
+  "notifOffSub": "Vous ne serez pas prévenu des devis, de l'arrivée du prestataire ni des paiements.",
+  "notifAllow": "Autoriser les notifications",
+  "notifOpenSettings": "Ouvrir les réglages",
+  "notifWhatTitle": "Ce que NexisHub vous envoie",
+  "notifQuotes": "Devis reçus et réponses",
+  "notifMission": "Départ, arrivée et fin de mission",
+  "notifMoney": "Paiements, argent versé et remboursements",
+  "notifDisputes": "Litiges et décisions",
+  "notifSecurity": "Nouveau téléphone sur votre compte",
+  "notifAlwaysHint": "Ces messages ne se coupent pas un par un : ils concernent votre argent et votre compte.",
+  "helpMyDisputes": "Mes litiges",
+  "helpNoDispute": "Aucun litige en cours.",
+  "helpQuestions": "Questions fréquentes",
+  "faqPaidQ": "Quand le prestataire reçoit-il l'argent ?",
+  "faqPaidA": "Votre argent est sécurisé par NexisHub dès le paiement. Il est versé au prestataire quand vous confirmez que c'est fait, ou 48 heures après la fin de la mission si vous n'avez rien signalé.",
+  "faqReportQ": "Que se passe-t-il si je signale un problème ?",
+  "faqReportA": "L'argent est bloqué : personne ne peut y toucher. NexisHub regarde le dossier avec vous deux, puis décide : vous rembourser, payer le prestataire ou partager.",
+  "faqContestQ": "Puis-je contester une décision ?",
+  "faqContestA": "Oui, une fois, dans les 3 jours qui suivent la décision. Une autre personne de NexisHub revoit alors le dossier.",
+  "faqSettleQ": "Et si nous trouvons un arrangement ?",
+  "faqSettleA": "Tant que NexisHub n'a pas décidé, vous pouvez proposer un arrangement au prestataire : il repasse, vous le payez, vous êtes remboursé ou vous partagez. Il a 48 heures pour répondre.",
+  "faqDeviceQ": "Pourquoi mon nouveau téléphone ne peut-il pas retirer d'argent ?",
+  "legalCgu": "Conditions générales d'utilisation",
+  "legalProviderTerms": "Conditions des prestataires",
+  "legalAcceptedOn": "Acceptées le {date}",
+  "@legalAcceptedOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "legalToAccept": "À accepter",
+  "legalRead": "Lire",
+  "becomeIntro": "Proposez vos services avec le même compte et le même portefeuille. L'équipe NexisHub vérifie chaque prestataire avant sa première mission.",
+  "becomeStep": "Étape {step} sur {total}",
+  "@becomeStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "becomeServices": "Quels services proposez-vous ?",
+  "becomeServicesHint": "Choisissez-en au moins un.",
+  "becomeWorks": "Vos réalisations",
+  "becomeWorksHint": "Facultatif : des photos de travaux déjà faits aident l'équipe à vérifier votre métier, puis les clients à vous choisir.",
+  "worksPrivacy": "L'équipe NexisHub regarde d'abord vos photos. Après son accord, elles sont montrées aux clients avec votre phrase. Évitez les visages, les adresses et les plaques.",
+  "worksAddPhotos": "Ajouter des photos",
+  "worksCount": "{count} sur {max}",
+  "@worksCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "worksNote": "Ce que vous avez fait, où et quand",
+  "worksNoteExample": "Ex. : pose d'un chauffe-eau, Limete, 2025",
+  "worksCertificates": "Diplôme ou attestation",
+  "worksCertificatesSub": "Facultatif, vu par l'équipe seulement. Les clients voient seulement « Diplôme vérifié par NexisHub ».",
+  "worksSkip": "Passer cette étape",
+  "worksRemove": "Retirer la photo",
+  "worksPhotoFailed": "Cette photo n'a pas pu être lue.",
+  "worksDemoNote": "Aperçu : les photos restent sur ce téléphone et ne sont envoyées nulle part.",
+  "myWorks": "Mes réalisations",
+  "myWorksSub": "Photos de vos travaux, montrées aux clients après accord de l'équipe",
+  "worksAskedShort": "L'équipe vous demande des photos de vos travaux",
+  "worksRequested": "L'équipe NexisHub vous demande des photos de vos travaux : {services}.",
+  "@worksRequested": {
+    "placeholders": {
+      "services": {
+        "type": "String"
+      }
+    }
+  },
+  "worksSave": "Envoyer à l'équipe",
+  "worksSaved": "C'est envoyé. L'équipe NexisHub les regardera.",
+  "worksLocked": "L'équipe NexisHub vérifie votre profil. Vos réalisations restent comme vous les avez envoyées jusqu'à sa décision, puis vous pourrez les modifier.",
+  "worksReviewPending": "En attente de l'équipe",
+  "worksReviewApproved": "Visible par les clients",
+  "worksReviewRejected": "Refusé par l'équipe : envoyez d'autres photos",
+  "worksCertificatesVerified": "Vérifié par l'équipe",
+  "showcaseOpen": "Voir ses réalisations",
+  "showcaseTitle": "Réalisations de {name}",
+  "@showcaseTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "showcaseChecked": "Photos vérifiées par l'équipe NexisHub",
+  "showcaseCertificate": "Diplôme vérifié par NexisHub",
+  "showcasePhoto": "Photo d'un travail déjà fait",
+  "becomeCommunes": "Où travaillez-vous ?",
+  "becomeCommunesHint": "Les communes où vous acceptez de vous déplacer.",
+  "becomeIdentity": "Vérifions votre identité",
+  "becomeIdentityHint": "Vos photos et votre vidéo servent seulement à la vérification par l'équipe NexisHub. Elles ne sont montrées à aucun client.",
+  "becomeIdDocument": "Pièce d'identité",
+  "becomeIdDocumentSub": "Carte d'électeur, permis de conduire ou passeport",
+  "becomeDocChoose": "Quelle pièce avez-vous ?",
+  "docVoterCard": "Carte d'électeur",
+  "docDrivingLicence": "Permis de conduire",
+  "docPassport": "Passeport",
+  "becomeCardSides": "Recto et verso, la photo se prend toute seule",
+  "becomePassportSub": "La page avec votre photo, la photo se prend toute seule",
+  "becomePhotoPage": "Page photo",
+  "scanPassportTitle": "La page photo du passeport",
+  "scanPassportHint": "Ouvrez-le à la page de votre photo, puis tournez-le sur le côté pour que cette page remplisse le cadre. La photo se prend toute seule.",
+  "scanWrongPage": "Ce n'est pas la bonne page. Montrez la page avec votre photo et les deux lignes du bas.",
+  "scanStartPassport": "Scanner la page photo",
+  "becomeSelfie": "Vidéo de vous",
+  "becomeSelfieSub": "Quelques secondes, sans son : suivez les consignes",
+  "becomeRetake": "Reprendre",
+  "becomeAcceptTerms": "J'ai lu et j'accepte les conditions des prestataires",
+  "becomeSend": "Envoyer ma demande",
+  "becomeSentTitle": "Demande envoyée",
+  "becomeSentText": "L'équipe NexisHub vérifie vos informations. Vous serez prévenu dès que votre profil de prestataire est validé.",
+  "becomeFailed": "La demande n'a pas pu être envoyée. Vérifiez chaque étape et réessayez.",
+  "becomeDemoNote": "Aperçu : les photos et la vidéo restent sur ce téléphone et ne sont envoyées nulle part.",
+  "becomeGuideNote": "L'app vous guide pendant la prise. C'est l'équipe NexisHub qui vérifie votre identité, pas l'app.",
+  "becomeScanCard": "Scanner ma pièce",
+  "becomeRecordVideo": "Filmer mon visage",
+  "becomeRecto": "Recto",
+  "becomeVerso": "Verso",
+  "becomeVideoDone": "Vidéo enregistrée · {seconds} s",
+  "@becomeVideoDone": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "scanRectoTitle": "Le recto de votre pièce",
+  "scanRectoHint": "Posez le recto, le côté avec votre photo, sur une surface plane et sombre. La photo se prend toute seule.",
+  "scanTurnTitle": "Retournez la carte",
+  "scanVersoHint": "Montrez maintenant le verso. La photo se prend toute seule.",
+  "scanSearching": "Placez la carte dans le cadre",
+  "scanHold": "Ne bougez plus…",
+  "scanChecking": "Vérification de la photo…",
+  "scanWrongVerso": "C'est le verso. Montrez d'abord le recto, le côté avec votre photo.",
+  "scanWrongRecto": "C'est encore le recto. Retournez la carte.",
+  "scanStartRecto": "Scanner le recto",
+  "scanStartVerso": "Scanner le verso",
+  "scanUnavailable": "Le scanner de documents n'est pas disponible sur ce téléphone. Mettez à jour les services Google Play, puis réessayez.",
+  "scanDone": "Recto et verso pris",
+  "cameraDenied": "NexisHub n'a pas accès à l'appareil photo. Autorisez-le dans les réglages pour continuer.",
+  "cameraMissing": "Aucun appareil photo utilisable sur ce téléphone.",
+  "cameraSimulator": "Simulateur : démonstration sans appareil photo.",
+  "selfieTitle": "Vidéo de vérification",
+  "selfieIntro": "Mettez-vous dans un endroit bien éclairé, seul devant l'appareil. La vidéo dure quelques secondes, sans son.",
+  "selfieFaceIn": "Placez votre visage dans le cercle",
+  "selfieTurnLeft": "Tournez la tête à gauche",
+  "selfieTurnRight": "Tournez la tête à droite",
+  "selfieLookAhead": "Regardez droit devant vous",
+  "selfieOneFace": "Une seule personne devant l'appareil",
+  "selfieTooSlow": "Le temps est écoulé. Recommençons.",
+  "selfieDone": "C'est fait, merci",
+  "selfieRecording": "Enregistrement",
+  "selfieStep": "Consigne {step} sur {total}",
+  "@selfieStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "providerPending": "Prestataire · en vérification",
+  "providerPendingHint": "Votre profil de prestataire est en cours de vérification par l'équipe NexisHub.",
+  "faqDeviceA": "Par sécurité, un téléphone ajouté à votre compte attend 72 heures avant de pouvoir faire sortir de l'argent de votre portefeuille.",
+  "becomeReadTerms": "Lire les conditions",
+  "numberVerified": "{phone} vérifié",
+  "@numberVerified": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "securityRow": "Code et sécurité",
+  "securityRowSub": "Pour ouvrir l'app et payer",
+  "protectTitle": "Protégez votre compte",
+  "protectIntro": "Créez un code NexisHub de 6 chiffres. Il vous sera demandé pour ouvrir l'app et avant chaque sortie d'argent.",
+  "protectAdvice": "N'utilisez pas votre code secret Mobile Money ni votre date de naissance. Ne le donnez à personne, même pas à NexisHub.",
+  "protectConfirmTitle": "Confirmez votre code",
+  "protectConfirmIntro": "Tapez-le une deuxième fois.",
+  "protectMismatch": "Les deux codes ne sont pas pareils. Recommencez.",
+  "protectWeak": "Ce code est trop facile à deviner. Choisissez-en un autre.",
+  "protectBioTitle": "Utiliser {method} ?",
+  "@protectBioTitle": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "protectBioText": "Ouvrez l'app et validez vos paiements sans taper votre code. C'est votre téléphone qui vous reconnaît : NexisHub ne voit jamais votre visage ni votre empreinte.",
+  "protectBioOn": "Activer {method}",
+  "@protectBioOn": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "protectBioLater": "Plus tard",
+  "protectDone": "Votre compte est protégé.",
+  "bioFingerprint": "l'empreinte",
+  "lockPrompt": "Tapez votre code NexisHub",
+  "lockWrong": "{count, plural, =1{Code incorrect. Encore 1 essai.} other{Code incorrect. Encore {count} essais.}}",
+  "@lockWrong": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lockForgot": "Code oublié ?",
+  "lockForgotText": "Vous allez être déconnecté de ce téléphone. Reconnectez-vous avec votre numéro, puis créez un nouveau code.",
+  "lockForgotAction": "Me déconnecter",
+  "lockBlockedTitle": "Trop d'essais",
+  "lockBlockedText": "Par sécurité, vous êtes déconnecté de ce téléphone. Reconnectez-vous avec un code reçu par SMS, WhatsApp ou Telegram.",
+  "lockUseBio": "Utiliser {method}",
+  "@lockUseBio": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "lockUseCode": "Taper mon code",
+  "lockBioChanged": "{method} a changé sur ce téléphone. Tapez votre code ; vous pourrez le réactiver dans Code et sécurité.",
+  "@lockBioChanged": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "lockDelete": "Effacer",
+  "guardTitle": "Confirmez avec votre code",
+  "guardPay": "Payer {amount} à {name}",
+  "@guardPay": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "guardRelease": "Verser l'argent à {name}",
+  "@guardRelease": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "securityBioHint": "Pour ouvrir l'app et valider vos paiements. Votre code reste demandé si {method} ne vous reconnaît pas.",
+  "@securityBioHint": {
+    "placeholders": {
+      "method": {
+        "type": "String"
+      }
+    }
+  },
+  "securityNoBio": "Ce téléphone ne peut pas vous reconnaître par le visage ou l'empreinte : votre code sert à tout.",
+  "securityChangeCode": "Changer mon code",
+  "securityCurrentCode": "Tapez votre code actuel",
+  "securityNewCode": "Nouveau code",
+  "securityCodeChanged": "Votre code est changé.",
+  "securityLockNote": "L'app se verrouille quand elle reste fermée plus d'une minute.",
+  "cancel": "Annuler",
+  "orgCreateRow": "Créer un espace entreprise",
+  "orgCreateRowSub": "Au nom de votre entreprise",
+  "orgInviteRow": "Invitation de {name}",
+  "@orgInviteRow": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "orgInviteRowSub": "Répondre à l'invitation",
+  "orgSwitchRow": "Changer d'espace",
+  "orgSwitchRowSub": "Client, prestataire, entreprise",
+  "orgTitle": "Espace entreprise",
+  "orgIntroTitle": "Un espace pour votre entreprise",
+  "orgIntroPersonal": "Votre compte personnel ne change pas.",
+  "orgIntroWalletT": "Son propre portefeuille",
+  "orgIntroWalletS": "Séparé de votre argent personnel.",
+  "orgIntroTeamT": "Votre équipe",
+  "orgIntroTeamS": "Chacun avec son propre compte.",
+  "orgIntroReceiptsT": "Des reçus clairs",
+  "orgIntroReceiptsS": "Au nom de l'entreprise.",
+  "orgIntroPrepareT": "À préparer",
+  "orgIntroPrepareS": "RCCM, IDNAT, NIF et le numéro Mobile Money marchand de l'entreprise.",
+  "orgStart": "Commencer",
+  "orgLater": "Plus tard",
+  "orgStep1Title": "Votre entreprise",
+  "orgName": "Nom",
+  "orgLegalForm": "Forme juridique",
+  "orgFormEstablishment": "Établissement",
+  "orgFormOther": "Autre",
+  "orgActivityLabel": "Sur NexisHub, l'entreprise…",
+  "orgActOrders": "Commande",
+  "orgActProvides": "Propose",
+  "orgActBoth": "Les deux",
+  "orgRepTitle": "Qui représente l'entreprise ?",
+  "orgRepSelf": "Moi-même",
+  "orgRepOther": "Une autre personne",
+  "orgRepOtherSub": "Elle devra confirmer avec son compte.",
+  "orgFunction": "Votre titre dans l'entreprise (facultatif)",
+  "orgFnManager": "Gérant",
+  "orgFnDirector": "Directeur",
+  "orgFnOwner": "Propriétaire",
+  "orgIdVerifiedT": "Identité déjà vérifiée",
+  "orgIdVerifiedS": "Rien de plus à envoyer : votre vérification NexisHub suffit.",
+  "orgIdTodoT": "Vérifier mon identité",
+  "orgIdTodoS": "Pas encore faite sur votre compte.",
+  "orgIdPiece": "Pièce d'identité",
+  "orgIdVideo": "Vidéo du visage",
+  "orgIdOnce": "Une seule fois : cette vérification servira aussi à vos autres espaces et à « Devenir prestataire ».",
+  "orgIdSent": "Vérification envoyée : l'équipe NexisHub la regarde.",
+  "orgDocsTitle": "Les documents de l'entreprise",
+  "orgDocRccm": "Registre du commerce",
+  "orgDocIdnat": "Identification nationale",
+  "orgDocNif": "Numéro d'impôt",
+  "orgDocReceived": "Reçu",
+  "orgDocToAdd": "À ajouter",
+  "orgDocToRedo": "À refaire",
+  "orgDocsNote": "Documents chiffrés, vus par l'équipe de vérification seulement.",
+  "orgDocsDemo": "Démonstration : l'envoi réel des documents arrive avec le serveur.",
+  "orgTermsTitle": "Conditions entreprises",
+  "orgAccept": "J'ai lu et j'accepte",
+  "orgReviewNote": "L'équipe vérifie vos documents avant d'ouvrir l'espace.",
+  "orgEdit": "Modifier",
+  "orgSummaryRep": "Représentant : {name}, {role}",
+  "@orgSummaryRep": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "orgSummaryOrders": "Commande des services",
+  "orgSummaryProvides": "Propose des services",
+  "orgSummaryBoth": "Commande et propose des services",
+  "orgDocsCount": "{count, plural, =1{1 document joint} other{{count} documents joints}}",
+  "@orgDocsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "orgSentTitle": "Demande envoyée",
+  "orgSentText": "L'équipe NexisHub vérifie {name}. Nous vous prévenons dans l'app, par message et par e-mail.",
+  "@orgSentText": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "orgTimeReview": "Vérification des documents",
+  "orgTimeReviewSub": "En cours par l'équipe",
+  "orgTimeOpen": "Espace entreprise ouvert",
+  "orgTimeOpenSub": "Portefeuille et équipe",
+  "orgSentPersonal": "En attendant, votre compte personnel fonctionne comme d'habitude.",
+  "orgBackProfile": "Retour au profil",
+  "orgFixTitle": "Une correction est demandée.",
+  "orgFixKept": "Le reste est conservé.",
+  "orgFixMessage": "Message de l'équipe",
+  "orgFixReplace": "Remplacer le document",
+  "orgFixWrite": "Écrire à l'équipe",
+  "orgApprovedTitle": "{name} est vérifiée",
+  "@orgApprovedTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "orgApprovedText": "Votre espace entreprise est ouvert, avec son propre portefeuille.",
+  "orgApprovedNumber": "Enregistrer le numéro Mobile Money marchand",
+  "orgApprovedInvite": "Inviter votre équipe",
+  "orgApprovedOpen": "Ouvrir l'espace entreprise",
+  "orgSwitchTitle": "Changer d'espace",
+  "orgSwitchPersonal": "Mon compte",
+  "orgChange": "Changer",
+  "orgAvailableCaption": "Disponible · entreprise",
+  "orgQuickTeam": "Équipe",
+  "orgOngoing": "Missions en cours",
+  "orgMissionsTitle": "Missions de l'entreprise",
+  "orgRoleRepresentative": "Représentant",
+  "orgRoleManager": "Gérant",
+  "orgRoleAccountant": "Comptable",
+  "orgRoleWorker": "Intervenant",
+  "orgRoleRepShort": "Repr.",
+  "orgRoleMgrShort": "Gérant",
+  "orgRoleAccShort": "Compt.",
+  "orgRoleWrkShort": "Interv.",
+  "orgRightMissions": "Voir toutes les missions de l'entreprise",
+  "orgRightBalance": "Voir le solde et l'historique",
+  "orgRightMembers": "Inviter ou retirer un membre",
+  "orgRightNumbers": "Gérer les numéros de retrait",
+  "orgRightWithdraw": "Retirer de l'argent",
+  "orgRightDoMissions": "Réaliser les missions de l'entreprise",
+  "orgRightOwnMissions": "Voir ses propres missions",
+  "orgRightNoMoney": "Ne voit ni le solde ni les retraits",
+  "orgRolesTitle": "Rôles et droits",
+  "orgRolesHint": "Le représentant garde la main sur l'argent et sur l'équipe.",
+  "orgRolesManagerNote": "Un gérant gère le quotidien, mais ne touche pas aux retraits.",
+  "orgRolesLink": "Voir les rôles et droits",
+  "orgTeamHint": "Un intervenant prend des missions seulement quand il est vérifié, comme tout prestataire.",
+  "orgMemberVerified": "Vérifié",
+  "orgMemberToVerify": "À vérifier",
+  "orgMemberInvited": "Invité",
+  "orgInviteAction": "Inviter",
+  "orgInviteRole": "Rôle",
+  "orgCanTitle": "Ce rôle permet de",
+  "orgInviteSend": "Envoyer l'invitation",
+  "orgInviteSent": "Invitation envoyée",
+  "orgInvTitle": "Invitation",
+  "orgInvHeading": "{org} vous invite",
+  "@orgInvHeading": {
+    "placeholders": {
+      "org": {
+        "type": "String"
+      }
+    }
+  },
+  "orgInvBody": "{name} vous propose de rejoindre l'équipe comme {role}.",
+  "@orgInvBody": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "orgInvOwn": "Votre compte personnel reste à vous, séparé de l'entreprise.",
+  "orgInvAccept": "Accepter l'invitation",
+  "orgInvRefuse": "Refuser",
+  "orgInvUnverT": "Votre identité reste à vérifier",
+  "orgInvUnverS": "Pièce, puis vidéo de votre visage.",
+  "orgInvUnverNote": "Vous pourrez accepter maintenant et vérifier ensuite.",
+  "orgInvAcceptVerify": "Accepter et vérifier",
+  "orgInvAccepted": "Vous avez rejoint l'équipe.",
+  "orgInvRefused": "Invitation refusée.",
+  "orgWalletRepOnly": "Retrait réservé au représentant",
+  "orgWithdrawCta": "Retirer de l'argent",
+  "orgWalletLocked": "Le solde de l'entreprise n'est pas visible avec votre rôle.",
+  "orgWorkerPays": "Le paiement de vos missions est géré par l'entreprise.",
+  "orgNumbersTitle": "Numéros de retrait",
+  "orgNumbersHint": "Seul le représentant les gère, depuis l'app.",
+  "orgNumberMerchant": "Marchand · {number}",
+  "@orgNumberMerchant": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "orgNumberActive": "Actif",
+  "orgNumberWaiting": "Dans {hours} h",
+  "@orgNumberWaiting": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "orgNumbersNote": "Chaque nouveau numéro prévient le représentant sur tous ses canaux (app, message, e-mail) et attend 72 h avant son premier retrait.",
+  "orgNumberAdd": "Ajouter un numéro",
+  "orgNumberAddTitle": "Nouveau numéro marchand",
+  "orgNumberOperator": "Opérateur",
+  "orgNumberGuard": "Ajouter le numéro {number} aux retraits de l'entreprise",
+  "@orgNumberGuard": {
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
+  "orgNumberDone": "Numéro ajouté : utilisable dans 72 h.",
+  "orgNumberLimit": "4 numéros au plus par compte.",
+  "orgNumberInvalid": "Ce numéro n'est pas valide.",
+  "orgWithdrawAvail": "Disponible pour l'entreprise",
+  "orgWithdrawAmount": "Montant",
+  "orgWithdrawTo": "Vers",
+  "orgWithdrawConfirm": "Vous confirmerez avec votre code ou Face ID.",
+  "orgWithdrawGo": "Retirer {amount}",
+  "@orgWithdrawGo": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "orgWithdrawGuard": "Retirer {amount} de {name} vers {operator}",
+  "@orgWithdrawGuard": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      },
+      "operator": {
+        "type": "String"
+      }
+    }
+  },
+  "orgWithdrawDone": "Retrait demandé : {amount}.",
+  "@orgWithdrawDone": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "orgWithdrawNoNumber": "Aucun numéro actif pour l'instant. Un nouveau numéro attend 72 h.",
+  "orgFailed": "Impossible pour le moment. Rien n'a été modifié. Réessayez dans un instant.",
+  "orgInvVerifiedT": "Vous êtes déjà vérifié",
+  "orgUpcoming": "À venir",
+  "orgFnAccountant": "Comptable",
+  "orgFnOtherHint": "Précisez la fonction",
+  "orgEmail": "E-mail",
+  "orgEmailInvalid": "Cette adresse e-mail n'est pas valide.",
+  "orgDocsFormat": "Photo nette ou PDF. Le NIF aussi : le numéro seul ne suffit pas, joignez le document.",
+  "orgRightTeam": "Voir l'équipe",
+  "orgRightAssign": "Affecter des intervenants aux missions",
+  "orgRolesCustomHint": "Ce sont les droits proposés. Vous pouvez les adapter pour chaque personne depuis l'équipe.",
+  "orgMemberRightsTitle": "Droits de la personne",
+  "orgMemberRightsHint": "Ce que {name} peut voir et faire. Les retraits, les numéros et l'équipe restent au représentant.",
+  "@orgMemberRightsHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "orgMemberFixed": "Réservé au représentant",
+  "orgMemberDefaults": "Remettre les droits proposés",
+  "orgMemberSaved": "Droits enregistrés.",
+  "orgTeamHidden": "L'équipe n'est pas visible avec vos droits.",
+  "orgMineOnly": "Vous voyez seulement vos propres missions.",
+  "orgAssignTitle": "Intervenants",
+  "orgAssignAction": "Affecter",
+  "orgAssignNone": "Aucun intervenant affecté",
+  "orgAssignWho": "Envoyer sur cette mission",
+  "orgAssignHint": "Plusieurs intervenants peuvent aller sur une même mission. Le client voit le nom de chacun.",
+  "orgAssignOnlyVerified": "Seuls les intervenants vérifiés peuvent être affectés.",
+  "orgAssignSave": "Enregistrer",
+  "orgAssignDone": "Intervenants enregistrés.",
+  "orgAssignedLine": "Intervenants : {names}",
+  "@orgAssignedLine": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "orgSpaceLabel": "Espace entreprise",
+  "orgBackPersonal": "Revenir à mon compte",
+  "orgProfileCompany": "L'entreprise",
+  "orgProfileRep": "Représentant",
+  "orgProfileEmail": "E-mail",
+  "orgPhotoRow": "Photo de l'entreprise",
+  "photoProfileTitle": "Photo de profil",
+  "photoTake": "Prendre une photo",
+  "photoChoose": "Choisir dans la photothèque",
+  "photoDelete": "Supprimer la photo",
+  "photoHint": "Votre photo est vue par vos clients et vos prestataires. Vous pouvez la changer ou la supprimer quand vous voulez.",
+  "photoDemo": "Démonstration : la photo reste sur ce téléphone en attendant le serveur.",
+  "photoEdit": "Modifier la photo",
+  "aboutRow": "À propos",
+  "aboutRowSub": "Version, conditions, contact",
+  "aboutText": "NexisHub met en relation des clients et des prestataires vérifiés, avec un paiement sécurisé jusqu'à la fin du service.",
+  "aboutVersion": "Version {version}",
+  "@aboutVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
+  }
+}

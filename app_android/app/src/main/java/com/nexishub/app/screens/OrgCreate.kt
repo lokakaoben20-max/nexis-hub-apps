@@ -419,10 +419,6 @@ private fun RepresentativeStep(
     if (!draft.representativeIsMe) {
         OrgTextField(draft.representativePhone, app.t("phone"), { onChange(draft.copy(representativePhone = it)) }, KeyboardType.Phone, "81 234 5678")
     }
-    OrgDropdown(app.t("orgFunction"), OrgFunction.entries, draft.function, { app.functionName(it) }) { onChange(draft.copy(function = it)) }
-    if (draft.function == OrgFunction.OTHER) {
-        OrgTextField(draft.functionOther, app.t("orgFunction"), { onChange(draft.copy(functionOther = it)) }, hint = app.t("orgFnOtherHint"))
-    }
     if (draft.representativeIsMe && profile != null) {
         if (identityVerified) {
             OrgIdentityBanner(true, app.t("orgIdVerifiedT"), app.t("orgIdVerifiedS"))
@@ -487,7 +483,7 @@ private fun TermsStep(
     val app = LocalApp.current
     val p = LocalPalette.current
     val other = draft.functionOther.trim()
-    val functionLabel = if (draft.function == OrgFunction.OTHER && other.isNotEmpty()) other else app.functionName(draft.function)
+    val functionLabel = draft.function?.let { if (it == OrgFunction.OTHER && other.isNotEmpty()) other else app.functionName(it) }
     val representative = if (draft.representativeIsMe) {
         profile?.let { "${it.firstName} ${it.lastName}" }.orEmpty()
     } else {
@@ -499,7 +495,11 @@ private fun TermsStep(
             TextButton(onClick = onEdit) { Text(app.t("orgEdit"), style = body(15, FontWeight.SemiBold, p.accent)) }
         }
         Text("RCCM ${draft.rccm}", style = body(14, color = p.muted))
-        Text(app.t("orgSummaryRep", "name" to representative, "role" to functionLabel.lowercase()), style = body(14, color = p.muted))
+        Text(
+            if (functionLabel != null) app.t("orgSummaryRep", "name" to representative, "role" to functionLabel.lowercase())
+            else "${app.t("orgProfileRep")} : $representative",
+            style = body(14, color = p.muted),
+        )
         draft.activity?.let { activity ->
             Text(
                 app.t(
